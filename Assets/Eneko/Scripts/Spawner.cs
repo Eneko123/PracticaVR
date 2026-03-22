@@ -5,7 +5,7 @@ public class Spawner : MonoBehaviour
 {
     public GameObject projectil;
     public List<GameObject> pool = new List<GameObject>();
-    public float spawnDistance = 20;
+    public float spawnDistance = 50;
     public float destinationOffsetRange = 2;
 
     private int poolSize = 5;
@@ -51,12 +51,11 @@ public class Spawner : MonoBehaviour
                 pool[i].GetComponent<Proyectil>().Launch(destinationOffsetRange);
                 return;
             }
-            AddProyectil(1);
-            ShootProyectil(origin);
         }
+        AddProyectil(1);
+        ShootProyectil(origin);
     }
 
-    // Spawn delante del jugador, alineado con su mirada
     Vector3 OriginPoint()
     {
         Transform cam = Camera.main.transform;

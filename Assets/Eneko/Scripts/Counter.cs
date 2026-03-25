@@ -5,6 +5,7 @@ public class Counter : MonoBehaviour
 {
     public int counter;
     public TMP_Text text;
+    private int counterMax = 20;
 
     void Start()
     {
@@ -19,7 +20,7 @@ public class Counter : MonoBehaviour
 
     void WinCondition()
     {
-        if (counter >= 20)
+        if (counter >= counterMax)
         {
             text.text = "¡HAS GANADO!";
         }
@@ -33,4 +34,7 @@ public class Counter : MonoBehaviour
     {
         text.text = counter + " / 20";
     }
+
+    public int GetMax() { return counterMax; }
+    public void SetMax(int newMax) { counterMax = newMax; } 
 }

@@ -5,10 +5,11 @@ public class Counter : MonoBehaviour
 {
     public int counter;
     public TMP_Text text;
-    private int counterMax = 20;
+    private int counterMax;
 
     void Start()
     {
+        counterMax = GameConfig.counterMax;
         counter = 0;
         UpdateText();
     }

@@ -12,24 +12,24 @@ public class Buttons : MonoBehaviour
 
     void ActiveDesactiveLeftSable()
     {
-        if (leftSable.activeSelf) { leftSable.SetActive(false); leftText.text = "No"; }
-        else { leftSable.SetActive(true); leftText.text = "Yes"; }
+        GameConfig.leftSableActive = !GameConfig.leftSableActive;
+        if (GameConfig.leftSableActive)
+            leftText.text = "Yes";
+        else
+            leftText.text = "No"; 
     }
 
     void ActiveDesactiveRigthSable()
     {
-        if (rigthSable.activeSelf) { rigthSable.SetActive(false); rigthText.text = "No"; }
-        else { rigthSable.SetActive(true); rigthText.text = "Yes"; }
+        GameConfig.rightSableActive = !GameConfig.rightSableActive;
+        if (GameConfig.leftSableActive)
+            rigthText.text = "Yes";
+        else
+            rigthText.text = "No";
     }
 
-    void UpMax()
-    {
-        counter.SetMax(counter.GetMax() + 1);
-    }
-    void DownMax()
-    {
-        counter.SetMax(counter.GetMax() - 1);
-    }
+    void UpMax() { GameConfig.counterMax++; }
+    void DownMax() { GameConfig.counterMax--; }
 
     private void Update()
     {

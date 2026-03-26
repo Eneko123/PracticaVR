@@ -4,7 +4,11 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public GameObject projectil;
+    public GameObject bombProjectil; 
+    public float bombProbability = 0.3f;
     public List<GameObject> pool = new List<GameObject>();
+    public List<GameObject> bombPool = new List<GameObject>();
+
     public float spawnDistance = 50;
     public float destinationOffsetRange = 2;
 
@@ -14,7 +18,8 @@ public class Spawner : MonoBehaviour
 
     void Start()
     {
-        AddProyectil(poolSize);
+        AddProyectil(poolSize, projectil, pool);
+        AddProyectil(poolSize, bombProjectil, bombPool);
         nextSpawnTime = Random.Range(2f, 3f);
     }
 
@@ -30,29 +35,34 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    void AddProyectil(int amount)
+    void AddProyectil(int amount, GameObject prefab, List<GameObject> targetPool)
     {
         for (int i = 0; i < amount; i++)
         {
-            GameObject p = Instantiate(projectil);
+            GameObject p = Instantiate(prefab);
             p.SetActive(false);
-            pool.Add(p);
+            targetPool.Add(p);
         }
     }
 
     void ShootProyectil(Vector3 origin)
     {
-        for (int i = 0; i < pool.Count; i++)
+        bool isBomb = Random.value < bombProbability;
+        List<GameObject> targetPool = isBomb ? bombPool : pool;
+        GameObject prefabToUse = isBomb ? bombProjectil : projectil;
+
+        for (int i = 0; i < targetPool.Count; i++)
         {
-            if (!pool[i].activeSelf)
+            if (!targetPool[i].activeSelf)
             {
-                pool[i].transform.position = origin;
-                pool[i].SetActive(true);
-                pool[i].GetComponent<Proyectil>().Launch(destinationOffsetRange);
+                targetPool[i].transform.position = origin;
+                targetPool[i].SetActive(true);
+                targetPool[i].GetComponent<Proyectil>().Launch(destinationOffsetRange);
                 return;
             }
         }
-        AddProyectil(1);
+
+        AddProyectil(1, prefabToUse, targetPool);
         ShootProyectil(origin);
     }
 

@@ -121,3 +121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 343292c14c339e244b564d855e65b229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxLifeTime: 10
+  normalColor: {r: 0, g: 0, b: 1, a: 1}
+  bombColor: {r: 1, g: 0, b: 0, a: 1}

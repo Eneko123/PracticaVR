@@ -3,24 +3,28 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject projectil;
-    public GameObject bombProjectil; 
+    public GameObject projectil; // Solo necesitas un prefab ahora
     public float bombProbability = 0.3f;
     public List<GameObject> pool = new List<GameObject>();
-    public List<GameObject> bombPool = new List<GameObject>();
 
     public float spawnDistance = 50;
     public float destinationOffsetRange = 2;
 
-    private int poolSize = 5;
+    // Variables de velocidad configurables
+    public float minSpeed = 5f;
+    public float maxSpeed = 10f;
+    public float minSpawnTime = 2f;
+    public float maxSpawnTime = 3f;
+
+
+    private int poolSize = 10;
     private float cooldown = 0;
     private float nextSpawnTime;
 
     void Start()
     {
-        AddProyectil(poolSize, projectil, pool);
-        AddProyectil(poolSize, bombProjectil, bombPool);
-        nextSpawnTime = Random.Range(2f, 3f);
+        AddProyectil(poolSize);
+        nextSpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
     }
 
     void Update()
@@ -31,38 +35,37 @@ public class Spawner : MonoBehaviour
         {
             ShootProyectil(OriginPoint());
             cooldown = 0f;
-            nextSpawnTime = Random.Range(2f, 3f);
+            nextSpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
         }
     }
 
-    void AddProyectil(int amount, GameObject prefab, List<GameObject> targetPool)
+    void AddProyectil(int amount)
     {
         for (int i = 0; i < amount; i++)
         {
-            GameObject p = Instantiate(prefab);
+            GameObject p = Instantiate(projectil);
             p.SetActive(false);
-            targetPool.Add(p);
+            pool.Add(p);
         }
     }
 
     void ShootProyectil(Vector3 origin)
     {
         bool isBomb = Random.value < bombProbability;
-        List<GameObject> targetPool = isBomb ? bombPool : pool;
-        GameObject prefabToUse = isBomb ? bombProjectil : projectil;
+        float speed = Random.Range(minSpeed, maxSpeed);
 
-        for (int i = 0; i < targetPool.Count; i++)
+        for (int i = 0; i < pool.Count; i++)
         {
-            if (!targetPool[i].activeSelf)
+            if (!pool[i].activeSelf)
             {
-                targetPool[i].transform.position = origin;
-                targetPool[i].SetActive(true);
-                targetPool[i].GetComponent<Proyectil>().Launch(destinationOffsetRange);
+                pool[i].transform.position = origin;
+                pool[i].SetActive(true);
+                pool[i].GetComponent<Proyectil>().Launch(destinationOffsetRange, isBomb, speed);
                 return;
             }
         }
 
-        AddProyectil(1, prefabToUse, targetPool);
+        AddProyectil(1);
         ShootProyectil(origin);
     }
 

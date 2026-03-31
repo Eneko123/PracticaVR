@@ -10,7 +10,7 @@ public class Buttons : MonoBehaviour
     public TMP_Text leftText;
     public TMP_Text rigthText;
 
-    void ActiveDesactiveLeftSable()
+    public void ActiveDesactiveLeftSable()
     {
         GameConfig.leftSableActive = !GameConfig.leftSableActive;
         if (GameConfig.leftSableActive)
@@ -19,17 +19,17 @@ public class Buttons : MonoBehaviour
             leftText.text = "No"; 
     }
 
-    void ActiveDesactiveRigthSable()
+    public void ActiveDesactiveRigthSable()
     {
         GameConfig.rightSableActive = !GameConfig.rightSableActive;
-        if (GameConfig.leftSableActive)
+        if (GameConfig.rightSableActive)
             rigthText.text = "Yes";
         else
             rigthText.text = "No";
     }
 
-    void UpMax() { GameConfig.counterMax++; }
-    void DownMax() { GameConfig.counterMax--; }
+    public void UpMax() { GameConfig.counterMax++; }
+    public void DownMax() { GameConfig.counterMax--; }
 
     private void Update()
     {
@@ -38,6 +38,6 @@ public class Buttons : MonoBehaviour
 
     void UpdateText()
     {
-        countText.text = counter.GetMax().ToString();
+        countText.text = GameConfig.counterMax.ToString();
     }
 }

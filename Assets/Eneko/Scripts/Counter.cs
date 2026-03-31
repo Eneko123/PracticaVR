@@ -33,7 +33,7 @@ public class Counter : MonoBehaviour
 
     void UpdateText()
     {
-        text.text = counter + " / 20";
+        text.text = counter + " / " + counterMax;
     }
 
     public int GetMax() { return counterMax; }

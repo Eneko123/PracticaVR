@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: fa62183e8abe05449805c3b57573bf00, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -472,6 +472,7 @@ GameObject:
   - component: {fileID: 1036801231020243023}
   - component: {fileID: 8470308394875003277}
   - component: {fileID: 1429830041343615149}
+  - component: {fileID: 5934660965557133742}
   m_Layer: 2
   m_Name: Plyer
   m_TagString: Untagged
@@ -608,6 +609,20 @@ MonoBehaviour:
   m_AimAssistRequiredSpeed: 0.25
   m_AimAssistPercent: 0.8
   m_AimAssistMaxSpeedPercent: 10
+--- !u!114 &5934660965557133742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757924514715642897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd3446906750be24dab1f22f8c5f266a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftSable: {fileID: 391636731813180847}
+  rightSable: {fileID: 6502109342485715478}
 --- !u!1 &2018845339662169283
 GameObject:
   m_ObjectHideFlags: 0
@@ -1407,7 +1422,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: fa62183e8abe05449805c3b57573bf00, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

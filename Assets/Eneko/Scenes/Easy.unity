@@ -355,9 +355,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectil: {fileID: 6195422053036814735, guid: 828fd09d2e3cdbc47b0edb5265bd5c99, type: 3}
+  bombProbability: 0
   pool: []
   spawnDistance: 20
-  destinationOffsetRange: 2
+  destinationOffsetRange: 3
+  minSpeed: 5
+  maxSpeed: 10
+  minSpawnTime: 2
+  maxSpawnTime: 3
 --- !u!1 &325771805
 GameObject:
   m_ObjectHideFlags: 0
@@ -1171,6 +1176,14 @@ PrefabInstance:
     - target: {fileID: 8468114780825073949, guid: 828fd09d2e3cdbc47b0edb5265bd5c99, type: 3}
       propertyPath: end
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8468114780825073949, guid: 828fd09d2e3cdbc47b0edb5265bd5c99, type: 3}
+      propertyPath: speedMax
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 8468114780825073949, guid: 828fd09d2e3cdbc47b0edb5265bd5c99, type: 3}
+      propertyPath: speedMin
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
